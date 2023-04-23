@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./CSShake/CSShake.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<!-- ヘッダー部分 -->
+    <header>
+        <div class="header-wrapper">
+            <h1>GAME START</h1>
+        </div>
+    </header>
+<!-- メイン部分 -->
+    <main>
+        <div class="main-text">
+            <h2>あなたの手を選択してください</h2>
+        </div>
+        <!-- じゃんけんの画像 -->
+        <div class="main-text">
+            <ul>
+                <li id="gu_btn" class="shake"><img src="./img/gu.jpeg" alt="#"></li>
+                <li id="cho_btn" class="shake"><img src="./img/cho.jpeg" alt="#"></li>
+                <li id="par_btn" class="shake"><img src="./img/par.jpeg" alt="#"></li>
+            </ul>
+        </div>
+        <div class="main-text">
+            <h2>コンピュータの出した手は？</h2>
+        </div>
+        <!-- PCが出した手の画像表示 -->
+        <div>
+            <p id="pc_hands" class="box__size"></p>
+        </div>
+        <!-- 勝敗結果の表示 -->
+        <div class="judgemnt__size">
+            <p id="judgment"></p>
+        </div>
+    </main>
+<!-- フッター部分 -->
+    <footer>
+        <h1>END</h1>
+    </footer>
+<!-- JS部分     -->
+    <script>
+        // クリックイベント グー
+        $("#gu_btn").on("click",function(){
+        const r = Math.ceil( Math.random()*3 );
+        // console.log(r);
+        let view = ""           //PCの出す手の表示
+        let result = ""         //勝敗結果の表示
+        //分岐処理
+        //グーを出したとき
+        if(r == 1){
+            view = '<img class="pc-ha" src="./img/gu.jpeg" alt="#">'
+            result = "引き分け"
+        }
+        //チョキを出したとき
+        if(r == 2){
+            view = '<img class="pc-ha" src="./img/cho.jpeg" alt="#">'
+            result = "勝ち"
+        }
+        //パーを出したとき
+        if(r == 3){
+            view = '<img class="pc-ha" src="./img/par.jpeg" alt="#">'
+            result = "負け"
+        }
+        //表示
+        $("#judgment").html(result);
+        $("#pc_hands").html(view);
+        });
+        // クリックイベント チョキ
+        $("#cho_btn").on("click",function(){
+        const r = Math.ceil( Math.random()*3 );
+        // console.log(r);
+        let view = ""
+        let result = ""
+        if(r == 1){
+            view = '<img class="pc-ha" src="./img/gu.jpeg" alt="#">'
+            result = "負け"
+        }
+        if(r == 2){
+            view = '<img class="pc-ha" src="./img/cho.jpeg" alt="#">'
+            result = "引き分け"
+        }
+        if(r == 3){
+            view = '<img class="pc-ha" src="./img/par.jpeg" alt="#">'
+            result = "勝ち"
+        }
+        $("#judgment").html(result);
+        $("#pc_hands").html(view);
+        });
+        // クリックイベント パー
+        $("#par_btn").on("click",function(){
+        const r = Math.ceil( Math.random()*3 );
+        // console.log(r);
+        let view = ""
+        let result = ""
+        if(r == 1){
+            view = '<img class="pc-ha" src="./img/gu.jpeg" alt="#">'
+            result = "勝ち"
+        }
+        if(r == 2){
+            view = '<img class="pc-ha" src="./img/cho.jpeg" alt="#">'
+            result = "負け"
+        }
+        if(r == 3){
+            view = '<img class="pc-ha" src="./img/par.jpeg" alt="#">'
+            result = "引き分け"
+        }
+        $("#judgment").html(result);
+        $("#pc_hands").html(view);
+        }); 
+    </script>
+</body>
+</html>
